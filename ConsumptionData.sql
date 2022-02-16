@@ -1,4 +1,17 @@
-SELECT DISTINCT BIF030.C_ACCOUNT AS ACCOUNTNUMBER,
+  /* 
+	 Gets consumption history for accounts from last 12 months.
+	 Columns include: Account #, Account Type Code/Description, Zone Code/Description, Meter Number, Register Number, Consumption, Units, Reading Date, Reading Date Month/Day/Year, and Day Amount for Reading
+	 Results are sorted by Account Number first, then Reading Date Ascending
+	 Results also filter out any Readings that have 0 days as the amount.
+
+	 ***The Drop Table query is added for manual updates. Simply select the query and press "Execute".***
+	 
+	 ***Be sure to remove or change the INTO statement before running***
+  */
+
+  --DROP TABLE water.dbo.Consumption_By_Account
+
+  SELECT DISTINCT BIF030.C_ACCOUNT AS ACCOUNTNUMBER,
 	BIF003.C_ACCOUNTTYPE AS ACCOUNTTYPECODE,
 	CON013.C_DESCRIPTION AS ACCOUNTTYPE,
 	BIF003.C_DIVISION AS ZONE_DIVISONCODE,
